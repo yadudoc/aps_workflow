@@ -11,8 +11,8 @@ WORKERPORT2=50060
 # Start the local coaster service to which the MPI workers will
 # connect
 ################################################################
-coaster-service -p $SERVICEPORT1 -localport $WORKERPORT1 -nosec -passive &> $PWD/coaster-service1.logs &
+coaster-service -p $SERVICEPORT1 -localport $WORKERPORT1 -nosec -passive &> $PWD/coaster-service1.log &
 
 
 exit 0
-coaster-service -p $SERVICEPORT2 -localport $WORKERPORT2 -nosec -passive &> $PWD/coaster-service2.logs &
+coaster-service -p $SERVICEPORT2 -localport $WORKERPORT2 -nosec -passive &> $PWD/coaster-service2.log &
