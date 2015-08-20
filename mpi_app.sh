@@ -19,12 +19,12 @@ echo service hostname=$(hostname -f)
 
 # dummyhosts=$(seq -s , -f "H%03.0f" 10)
 
-/home/users/p01532/mpich-3.1.4/install/bin/mpiexec -iface=ipogif0 -launcher manual -hosts $hosts -n $nproc ./mpicatnap infile outraven 1 2>&1 | tee mpiexec.out &
+/home/users/p01532/mpich-3.1.4/install/bin/mpiexec -iface=ipogif0 -launcher manual -hosts $hosts -n $nproc $MPI_APP_PATH infile outraven 1 2>&1 | tee mpiexec.out &
 
 sleep 3
 echo launchlist:
 launchlist=$(cat mpiexec.out | grep HYDRA_LAUNCH: | sed -e 's/HYDRA_LAUNCH: //' | head -1 | sed -e 's/--proxy-id.*$/--proxy-id/')
 
-aprun -b -n $nodes -d $ppn -N 1 ./prox "$hosts" "$launchlist"
+aprun -b -n $nodes -d $ppn -N 1 $MPI_PROX_PATH "$hosts" "$launchlist"
 
 wait
