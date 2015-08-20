@@ -13,10 +13,10 @@ int  resolution  = toInt(arg("res",  "10000"));   # Resolution of result
 file mandel_img[] <simple_mapper; prefix="output/mandel_", suffix=".jpg">;
 file mandel_out[] <simple_mapper; prefix="output/mandel_", suffix=".out">;
 file mandel_err[] <simple_mapper; prefix="output/mandel_", suffix=".err">;
-file mandel_sh <"./bin/run_mpi_app">;
+file mpi_sh <"./mpi_app.sh">;
 
 foreach i in [5:itermax:step]{
     tracef("i = %i \n", i);
-    (mandel_out[i], mandel_err[i]) = mpi_app(mandel_sh);
+    (mandel_out[i], mandel_err[i]) = mpi_app(mpi_sh);
 }
 
