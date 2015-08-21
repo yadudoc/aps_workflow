@@ -8,13 +8,16 @@ echo "Nproc : $nproc"
 echo "ppn   : $ppn"
 echo "nodes : $nodes"
 
-cd $PBS_O_WORKDIR
 PATH=$MPI_INSTALL:$PATH
 
-
 hosts=$(aprun -n $nodes -d $ppn -N 1 /bin/hostname | grep nid0)
+echo $hosts
 hosts=$(echo $hosts | sed -e "s/ /,/g")
 echo hosts=$hosts
+
+echo service hostname=$(hostname -f)
+
+exit 0
 
 echo service hostname=$(hostname -f)
 
