@@ -19,6 +19,17 @@ echo service hostname=$(hostname -f)
 
 cd /lustre/beagle2/yadunandb/IceNine_bgl_test
 
+ls -thor ;
+if [ -f icenine_data.tar.gz ];
+then
+    tar -xzf icenine_data.tar.gz;
+    cd icenine_data;
+else
+    echo "Missing icenine_data.tar.gz" >&2
+    echo "Missing icenine_data.tar.gz"
+    exit 1
+fi
+
 $MPI_INSTALL/mpiexec -iface=ipogif0 -launcher manual -hosts $hosts -n $nproc $MPI_APP_PATH infile outraven 1 2>&1 | tee mpiexec.out &
 
 sleep 3

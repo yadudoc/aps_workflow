@@ -14,7 +14,7 @@ file mandel_img[] <simple_mapper; prefix="output/mandel_", suffix=".jpg">;
 file mandel_out[] <simple_mapper; prefix="output/mandel_", suffix=".out">;
 file mandel_err[] <simple_mapper; prefix="output/mandel_", suffix=".err">;
 file mpi_sh <"./mpi_app.sh">;
-file data <"./data">;
+file data <"./icenine_data.tar.gz">;
 file prox <"./prox">;
 
 foreach i in [1:itermax]{
