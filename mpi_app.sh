@@ -17,6 +17,8 @@ echo service hostname=$(hostname -f)
 
 # dummyhosts=$(seq -s , -f "H%03.0f" 10)
 
+cd /lustre/beagle2/yadunandb/IceNine_bgl_test
+
 $MPI_INSTALL/mpiexec -iface=ipogif0 -launcher manual -hosts $hosts -n $nproc $MPI_APP_PATH infile outraven 1 2>&1 | tee mpiexec.out &
 
 sleep 3
