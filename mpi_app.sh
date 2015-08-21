@@ -11,14 +11,8 @@ echo "nodes : $nodes"
 PATH=$MPI_INSTALL:$PATH
 
 hosts=$(aprun -n $nodes -d $ppn -N 1 /bin/hostname | grep nid0)
-echo $hosts
 hosts=$(echo $hosts | sed -e "s/ /,/g")
 echo hosts=$hosts
-
-echo service hostname=$(hostname -f)
-
-exit 0
-
 echo service hostname=$(hostname -f)
 
 # dummyhosts=$(seq -s , -f "H%03.0f" 10)
